@@ -15,10 +15,7 @@ void playerMove();
 void computerMove();
 char checkWinner();
 void printWinner(char);
-
 void saveGame(int pWin, int cWin);
-
-
 
 int main()
 {
@@ -38,8 +35,6 @@ int main()
       cWin = atoi(line);
     }
   }
-
-
 
   fclose(file);
   resetBoard();
@@ -78,7 +73,7 @@ int main()
     }
 
     printf("Do you want to play again? (Yes/No)\n");
-    scanf("\n%s", &playAgain);
+    scanf("\n%3s", &playAgain);
     if(strcmp(strlwr(playAgain), "no") == 0){
       break;
     }
@@ -89,8 +84,6 @@ int main()
 }
 
 
-
-
 void resetBoard(){
   for(int i = 0; i < 3; i++){
     for(int j = 0; j < 3; j++){
@@ -98,6 +91,7 @@ void resetBoard(){
     }
   }
 }
+
 void printBoard(){
   printf(" %c | %c | %c ", board[0][0], board[0][1], board[0][2]);
   printf("\n---|---|---\n");
@@ -105,8 +99,8 @@ void printBoard(){
   printf("\n---|---|---\n");
   printf(" %c | %c | %c ", board[2][0], board[2][1], board[2][2]);
   printf("\n");
-
 }
+
 int checkFreeSpaces(){
   int freeSpaces = 9;
 
@@ -117,8 +111,10 @@ int checkFreeSpaces(){
       }
     }
   }
+
   return freeSpaces;
 }
+
 void playerMove(){
   int x;
   int y;
@@ -139,6 +135,7 @@ void playerMove(){
     }
   }while(board[x][y] != ' ');
 }
+
 void computerMove(){
   //random num
   srand(time(0));
@@ -157,6 +154,7 @@ void computerMove(){
     printWinner(' ');
   }
 }
+
 char checkWinner(){
   //check rows
   for(int i = 0; i < 3; i++){
@@ -182,6 +180,7 @@ char checkWinner(){
 
   return ' ';
 }
+
 void printWinner(char winner){
   if(winner == PLAYER){
     printf("YOU WIN!\n");
